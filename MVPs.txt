@@ -1,0 +1,14 @@
+Pitch: Create a website that uses the steam api to suggest what games you should play next
+
+MVPS:
+
+Use steam api to allow login
+Show games you should play based on what you have in your steam library
+Show top 10 reviews for bad and good for each game
+Show games your friends have that you don't
+Allow for you to be taken to the game's steam store page
+
+Future Features:
+Allow for discord use for choosing games to play
+Manual surveys to see what to suggest to you based off your answers
+Sort suggestion pages by price and tags
