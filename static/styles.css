@@ -1,7 +1,11 @@
-* {
-    margin: 0px;
-    padding: 0px
+.bgnavbar {
+    background-color: #0b1936;
 }
+
+
+
+
+/* 
 
 #homepage {
     display: flex;
@@ -46,4 +50,4 @@ button {
 
 button:hover {
     color: rgba(102, 192, 244, 1);
-}
+} */
