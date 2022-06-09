@@ -1,0 +1,39 @@
+{% extends "base.html" %} {% block title %}Sign Up{% endblock %}
+
+{% block nav %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-blue">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
+      <span class="navbar-toggler-icon"></span> 
+    </button>
+    <div class="collapse navbar-collapse" id="navbar">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link navbar-nav" id="login" href="/login">Login</a>
+        <a class="nav-item nav-link navbar-nav" id="signUp" href="/sign-up">Sign Up</a>
+      </div>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block content %}
+<form method="POST">
+    <h3 align="center" class="font-color">Sign Up</h3>
+    <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Email"/>
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Username"/>
+        <label for="steamid">SteamId</label>
+        <input type="text" class="form-control" id="steamid" name="steamid" placeholder="SteamId"/>
+        <br />
+        <a href="https://www.steamidfinder.com" target ="_blank" class="btn bg-blue text-white">Find Your SteamId Here</a>
+        <br />
+        <br />
+        <label for="password1">Password</label>
+        <input type="password" class="form-control" id="password1" name="password1" placeholder="Password"/>
+        <label for="password2">Password (Confirm)</label>
+        <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirm Password"/>
+    </div>
+    <br />
+    <button type="submit" class="btn bg-blue text-white">Sign Up</button>
+</form> 
+{% endblock %}
