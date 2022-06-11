@@ -1,5 +1,8 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request, flash
 from flask_login import login_required, current_user
+from .models import Users, Games, Reviews
+from . import db
+
 
 views = Blueprint('views', __name__)
 
@@ -16,14 +19,20 @@ def home():
 def games_to_play():
     return render_template('gamestoplay.html')
 
-@views.route('/reviews')
+@views.route('/reviews', methods=['GET', 'POST'])
+@login_required
 def reviews():
-    return render_template('reviews.html')
+    if request.method == "POST":
+        review = request.form.get('reviewtext')
+        game = request.form.get('gamechoice')
+        score = request.form.get('score')
 
-@views.route('/wishlist')
-def wishlist():
-    return render_template('wishlist.html')
+        if len(review) < 1:
+            flash('Review is too short!', category="error")
+        else:
+            new_review = Reviews(data=review, user_id=current_user.id)
+            db.session.add(new_review)
+            db.session.commit()
+            flash('Review posted!', category="success")
 
-@views.route('/howitworks')
-def how_it_works():
-    return render_template('howitworks.html')
+    return render_template('reviews.html', user=current_user)
