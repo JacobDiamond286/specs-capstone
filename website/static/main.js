@@ -1,3 +1,3 @@
 function onButtonClick(){
-    document.getElementById('review-post').className="show";
+    document.getElementById('review-post').className = "show";
 }

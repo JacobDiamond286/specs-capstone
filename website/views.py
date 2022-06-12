@@ -15,10 +15,10 @@ def base():
 def home():
     return render_template('home.html', user=current_user)
 
-@views.route('/games', methods=['GET'])
+@views.route('/games', methods=['GET', 'POST'])
 @login_required
 def games_to_play():
-    return render_template('gamestoplay.html', user=current_user, games=Games.query.all())
+        return render_template('gamestoplay.html', user=current_user, games=Games.query.all())
 
 @views.route('/myreviews', methods=['GET', 'POST'])
 @login_required
@@ -38,7 +38,7 @@ def myreviews():
 
     return render_template('myreviews.html', user=current_user, game=Games.query.all())
 
-@views.route('/reviews', methods=['GET'])
+@views.route('/reviews/Elden%20Ring')
 @login_required
-def reviews():
-    return render_template('gamereviews.html', user=current_user, games=Games.query.all())
+def er():
+    return render_template('er.html', user=current_user, games=Games.query.all())

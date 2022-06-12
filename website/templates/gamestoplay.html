@@ -1,10 +1,11 @@
 {% extends "base.html" %} {% block title %}Games To Play{% endblock %}
 {% block content %}
+<h1 align="center" class="font-color">Which Game's Reviews Would You Like To See?</h1>
 <br />
 <div>
-    <ul class="list-group list-group-flush" id="gameslist">
+    <ul>
         {% for game in games %}
-        <a href="/reviews"><li class="list-group-item" value="{{ game.id }}" name="gameslist"><b>{{ game.title }}</b></li></a>
+        <button onclick="onButtonClick()"><li class="list-group-item" value="{{ game.id }}"><b>{{ game.title }}</b></li></button>
         <br />
         {% endfor %}
     </ul>
