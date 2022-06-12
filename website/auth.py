@@ -56,7 +56,6 @@ def sign_up():
             new_user = Users(email=email, username=username, steam_id=steamid, password=generate_password_hash(password1, method='sha256'))
             db.session.add(new_user)
             db.session.commit()
-            login_user(user, remember=True)
             flash('Account Created!', category='success')
             return redirect(url_for('views.home'))
 

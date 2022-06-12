@@ -29,7 +29,7 @@
       <div class="navbar-nav">
         <a class="nav-item nav-link" id="home" href="/home">Home</a>
         <a class="nav-item nav-link" id="games" href="/games">Games</a>
-        <a class="nav-item nav-link" id="reviews" href="/reviews">Reviews</a>
+        <a class="nav-item nav-link" id="reviews" href="/myreviews">My Reviews</a>
         <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
       </div>
     </div>
@@ -43,14 +43,14 @@
     {% if messages %}
       {% for category, message in messages %}
       {% if category == 'error' %}
-      <div class="alert alert-danger alert-dismissable fade show" role="alert">
+      <div class="alert alert-danger alert-dismissable fade show sticky-top" role="alert">
         {{ message }}
         <button type="button" class="close" data-dismiss="alert">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       {% else %}
-      <div class="alert alert-success alert-dismissable fade show" role="alert">
+      <div class="alert alert-success alert-dismissable fade show sticky-top" role="alert">
         {{ message }}
         <button type="button" class="close" data-dismiss="alert">
           <span aria-hidden="true">&times;</span>
@@ -61,7 +61,7 @@
     {% endif %}
     {% endwith %}
 
-    <div class="container">
+    <div align="center" class="container">
       {% block content %}
       {% endblock %}
     </div>
@@ -80,5 +80,6 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>  
+    <script src="/website/static/main.js"></script>
 </body>
 </html>

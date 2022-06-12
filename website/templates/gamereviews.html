@@ -1,0 +1,11 @@
+{% extends "base.html" %} {% block title %}Reviews{% endblock %}
+{% block content %}
+{% if gameslist == 1 %}
+    {% for review in game.reviews%} 
+    <li class="list-group-item"><b>{{ user.username }}</b> had this to say about {{ review.game.title }}: {{ review.text }}
+        <br/>
+        Score:{{ review.score }}</li>
+        <br />
+    {% endfor %}
+{% endif %}
+{% endblock %}

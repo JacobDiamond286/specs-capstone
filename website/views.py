@@ -15,13 +15,14 @@ def base():
 def home():
     return render_template('home.html', user=current_user)
 
-@views.route('/games')
-def games_to_play():
-    return render_template('gamestoplay.html')
-
-@views.route('/reviews', methods=['GET', 'POST'])
+@views.route('/games', methods=['GET'])
 @login_required
-def reviews():
+def games_to_play():
+    return render_template('gamestoplay.html', user=current_user, games=Games.query.all())
+
+@views.route('/myreviews', methods=['GET', 'POST'])
+@login_required
+def myreviews():
     if request.method == "POST":
         review = request.form.get('reviewtext')
         game = request.form.get('gamechoice')
@@ -30,9 +31,14 @@ def reviews():
         if len(review) < 1:
             flash('Review is too short!', category="error")
         else:
-            new_review = Reviews(data=review, user_id=current_user.id)
+            new_review = Reviews(text=review, user_id=current_user.id, score=score, game_id=game)
             db.session.add(new_review)
             db.session.commit()
             flash('Review posted!', category="success")
 
-    return render_template('reviews.html', user=current_user)
+    return render_template('myreviews.html', user=current_user, game=Games.query.all())
+
+@views.route('/reviews', methods=['GET'])
+@login_required
+def reviews():
+    return render_template('gamereviews.html', user=current_user, games=Games.query.all())

@@ -1,0 +1,45 @@
+{% extends "base.html" %} {% block title %}My Reviews{% endblock %}
+{% block content %}
+<br />
+<input type="button" name="post" value="Write A Review" onclick="onButtonClick()" class="btn bg-blue text-white"/>
+<h1 align="center" class="font-color">My Reviews</h1>
+
+<form method="POST" id="review-post">
+    <label for="gamechoice">Choose A Game:</label>
+    <select name="gamechoice" id="gamechoice">
+        <option value="1">Elden Ring</option>
+        <option value="2">Dark Souls</option>
+        <option value="3">Team Fortress 2</option>
+        <option value="4">Counter Strike Global Offensive</option>
+        <option value="5">Terraria</option>
+        <option value="6">Rocket League</option>
+        <option value="7">Stardew Valley</option>
+        <option value="8">Red Dead Redemption</option>
+        <option value="9">Left 4 Dead 2</option>
+        <option value="10">Among Us</option>
+    </select>
+    <textarea name="reviewtext" id="reviewtext" class="form-control" placeholder="Type Review Here..."></textarea>
+    <label for="score">Rate this Game:</label>
+    <select name="score" id="score">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <br />
+    <div align="center">
+        <button type="submit" class="btn bg-blue text-white">Post</button>
+    </div>
+</form>
+<br />
+<ul class="list-group list-group-flush" id="reviewslist">
+    {% for review in user.reviews%}
+    <li class="list-group-item"><b>{{ user.username }}</b> had this to say about {{ review.game.title }}: {{ review.text }}
+    <br/>
+    Score:{{ review.score }}</li>
+    <br />
+    {% endfor %}
+</ul>
+<br />
+{% endblock %}

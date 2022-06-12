@@ -19,6 +19,7 @@ class Reviews(db.Model):
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     game_id = db.Column(db.Integer, db.ForeignKey('games.id'), nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    text = db.Column(db.String(1000), nullable=False)
     score = db.Column(db.Integer, nullable=False)
 
 class Games(db.Model):
@@ -28,3 +29,4 @@ class Games(db.Model):
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     price = db.Column(db.Integer, nullable=False)
+    reviews = db.relationship('Reviews', backref="game")

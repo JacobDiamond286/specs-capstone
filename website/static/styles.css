@@ -42,6 +42,14 @@ label {
     color: #c7d5e0;
 }
 
+.hide{
+    display:none;
+}
+
+.show{
+    display:block;
+}
+
 .landing-btn {
     height: 300px;
     width: 300px;

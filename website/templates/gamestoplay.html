@@ -1,8 +1,12 @@
 {% extends "base.html" %} {% block title %}Games To Play{% endblock %}
 {% block content %}
+<br />
 <div>
-    <ul>
-        <li></li>
+    <ul class="list-group list-group-flush" id="gameslist">
+        {% for game in games %}
+        <a href="/reviews"><li class="list-group-item" value="{{ game.id }}" name="gameslist"><b>{{ game.title }}</b></li></a>
+        <br />
+        {% endfor %}
     </ul>
 </div>
 {% endblock %}
