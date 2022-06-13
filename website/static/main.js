@@ -1,6 +1,5 @@
 let reviewPost = document.getElementById('review-post')
 let reviewButton = document.getElementById('show-review')
-let eldenRing = document.getElementById('show-elden')
 console.log("Java Connected")
 
 function onButtonClick(){
@@ -11,17 +10,6 @@ function onButtonClick(){
         reviewPost.className = "hide";
     }
 }
-
-function eR(){
-    if (eldenRing.className == 'hide'){
-        eldenRing.className = 'show';
-    } else {
-        eldenRing.className = 'hide';
-    }
-}
-
-
-
 
 
 reviewButton.addEventListener('click', onButtonClick)
