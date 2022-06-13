@@ -5,7 +5,8 @@
 <div>
     <ul>
         {% for game in games %}
-        <button onclick="onButtonClick()"><li class="list-group-item" value="{{ game.id }}"><b>{{ game.title }}</b></li></button>
+        <br />
+        <a href="/games/{{game.id}}"><button><li class="list-group-item" value="{{ game.id }}"><b>{{ game.title }}</b></li></button></a>
         <br />
         {% endfor %}
     </ul>

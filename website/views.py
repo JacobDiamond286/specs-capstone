@@ -38,7 +38,7 @@ def myreviews():
 
     return render_template('myreviews.html', user=current_user, game=Games.query.all())
 
-@views.route('/reviews/Elden%20Ring')
+@views.route('/games/<game_id>')
 @login_required
-def er():
-    return render_template('er.html', user=current_user, games=Games.query.all())
+def game_reviews(game_id):
+    return render_template('gamereviews.html', user=current_user, users=Users.query.all(), games=Reviews.query.filter_by(game_id=game_id).all())
