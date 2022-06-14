@@ -44,27 +44,9 @@ def myreviews():
 @login_required
 def game_reviews(game_id):
     game_title=Games.query.filter_by(id=game_id).first().title
-    
-    # username_table=db.session.query(Reviews).outerjoin(Users, Reviews.user_id==Users.id)
+    games=Reviews.query.filter_by(game_id=game_id).all()
+    for game in games:
+        current_user_id = game.user_id
+        game.username=Users.query.get(current_user_id).username
 
-    # username_table=db.session.query(Users).join(Reviews, Users.id==Reviews.user_id).all()
-    # # test = db.session.execute(username_table)
-    # games_table=db.session.query(Games).join(username_table, Games.id==username_table.id)
-
-    Reviews.query.filter_by(game_id=game_id).all()
-
-    username_table=Users.query.join(Reviews)
-
-    games_table=Games.query.join(Reviews)
-    combined=username_table.join(games_table)
-
-    # combined_table = db.session.query(Reviews, Users, Games).filter(Reviews.game_id == game_id).outerjoin(Games, Games.id == Reviews.id).all()
-    # games=Reviews.query.filter_by(game_id=game_id).all()
-    # print(test)
-    print(username_table)
-
-    for record in combined:
-        print(record.id)
-    
-
-    return render_template('gamereviews.html', user=current_user, username_table=username_table, games=Reviews.query.filter_by(game_id=game_id).all(), current_title=game_title)
+    return render_template('gamereviews.html', user=current_user, games=games, current_title=game_title)
