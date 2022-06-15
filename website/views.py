@@ -1,9 +1,9 @@
-from flask import Blueprint, render_template, request, flash
+from flask import Blueprint, jsonify, render_template, request, flash, jsonify
 from flask_login import login_required, current_user
 from .models import Users, Games, Reviews
 from . import db
 from sqlalchemy.orm import relationship
-
+import json
 
 
 views = Blueprint('views', __name__)
@@ -50,3 +50,15 @@ def game_reviews(game_id):
         game.username=Users.query.get(current_user_id).username
 
     return render_template('gamereviews.html', user=current_user, games=games, current_title=game_title)
+
+@views.route('/delete-review', methods=['POST'])
+def delete_review():
+    review = json.loads(request.data)
+    reviewId = review['reviewId']
+    review = Reviews.query.get(reviewId)
+    if review:
+        if review.user_id == current_user.id:
+            db.session.delete(review)
+            db.session.commit()
+            
+    return jsonify({})
