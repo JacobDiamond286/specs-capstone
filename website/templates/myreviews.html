@@ -35,12 +35,12 @@
 <br />
 <ul class="list-group list-group-flush" id="reviewslist" >
     {% for review in user.reviews%}
-    <li class="list-group-item"><b>{{ user.username }}</b> had this to say about {{ review.game.title }}: {{ review.text }}
+    <li class="list-group-item"><b>{{ user.username }}</b> had this to say about <b>{{ review.game.title }}</b>: {{ review.text }}
         <button type="button" class="close" id="review-delete" onclick="deleteReview({{ review.id }} )">
             <span aria-hidden="true">&times;</span>
         </button>
     <br/>
-    Score:{{ review.score }}</li>
+    Score: {{ review.score }}</li>
     <br />
     {% endfor %}
 </ul>
